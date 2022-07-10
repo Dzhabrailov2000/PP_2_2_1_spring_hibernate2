@@ -16,26 +16,26 @@ public class MainApp {
 
       UserService userService = context.getBean(UserService.class, Car.class);
 
-//      userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
-//      userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
-//      userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
-//      userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
+      userService.add(new User("User1", "Lastname1", "user1@mail.ru", new Car("Model", 1)));
+      userService.add(new User("User2", "Lastname2", "user2@mail.ru", new Car("model2", 2)));
+      userService.add(new User("User3", "Lastname3", "user3@mail.ru", new Car("model3", 3)));
+      userService.add(new User("User4", "Lastname4", "user4@mail.ru", new Car("model4", 4)));
 
-      Car car = new Car("Gaz", 53);
-      User user = new User("Ramzan", "Dzhabrailov", "norah.ra9@gmail.com");
-      userService.add(user);
-      user.setCar(car);
-//      System.out.println(car.getUser());
-//      System.out.println(user.getCar());
+      List<User> users = userService.listUsers();
+      for (User user : users) {
+         System.out.println("Id = "+user.getId());
+         System.out.println("First Name = "+user.getFirstName());
+         System.out.println("Last Name = "+user.getLastName());
+         System.out.println("Email = "+user.getEmail());
+         System.out.println();
+      }
 
-//      List<User> users = userService.listUsers();
-//      for (User user : users) {
-//         System.out.println("Id = "+user.getId());
-//         System.out.println("First Name = "+user.getFirstName());
-//         System.out.println("Last Name = "+user.getLastName());
-//         System.out.println("Email = "+user.getEmail());
-//         System.out.println();
-//      }
+      User user = userService.getUserCar("model2", 2);
+      System.out.println(user.getId());
+      System.out.println(user.getFirstName());
+      System.out.println(user.getLastName());
+      System.out.println(user.getEmail());
+      System.out.println(user.getUserCar().getModel());
 
       context.close();
    }

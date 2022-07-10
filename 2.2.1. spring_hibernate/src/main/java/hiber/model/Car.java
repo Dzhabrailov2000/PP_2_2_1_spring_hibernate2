@@ -16,8 +16,8 @@ public class Car {
     @Column(name = "series")
     private int series;
 
-    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
-    private User user;
+    @OneToOne(mappedBy = "userCar", cascade = CascadeType.ALL)
+    private User carUser;
 
     public Car() {
     }
@@ -51,12 +51,12 @@ public class Car {
         this.series = series;
     }
 
-    public User getUser() {
-        return user;
+    public User getCarUser() {
+        return carUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCarUser(User carUser) {
+        this.carUser = carUser;
     }
 
     @Override
